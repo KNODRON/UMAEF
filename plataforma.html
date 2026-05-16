@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>UMAEF | Plataforma Live</title>
+
+  <link rel="stylesheet" href="plataforma.css" />
+</head>
+
+<body>
+
+  <header class="topbar">
+
+    <div class="brand">
+      <img src="logo-umaef.png" alt="UMAEF" />
+      <div>
+        <strong>UMAEF LIVE</strong>
+        <span>Plataforma Operacional de Inspección Aérea</span>
+      </div>
+    </div>
+
+    <nav>
+      <a href="index.html">← Volver</a>
+      <button id="btnAlerta">Simular Alerta</button>
+    </nav>
+
+  </header>
+
+  <main class="dashboard">
+
+    <section class="map-panel">
+
+      <div class="map-header">
+        <div>
+          <span>Mapa Operacional</span>
+          <h1>Emergencia / Faena Activa</h1>
+        </div>
+
+        <div class="live-badge">
+          ● EN VIVO
+        </div>
+      </div>
+
+      <div class="map-area">
+
+        <div class="grid-map"></div>
+
+        <div class="zone zone-1">
+          Zona de inspección
+        </div>
+
+        <div class="marker base">
+          <span>UMAEF</span>
+        </div>
+
+        <div class="marker drone" id="droneMarker">
+          <span>DRON</span>
+        </div>
+
+        <div class="marker incident">
+          <span>INCIDENTE</span>
+        </div>
+
+        <div class="route-line"></div>
+
+      </div>
+
+    </section>
+
+    <aside class="side-panel">
+
+      <section class="video-box">
+
+        <div class="video-head">
+          <strong>TRANSMISIÓN AÉREA</strong>
+          <span>LIVE</span>
+        </div>
+
+        <div class="video-screen">
+          <div class="camera-overlay">
+            <p>FEED UMAEF-01</p>
+            <p>ZOOM 1.0x · TERMAL DISPONIBLE</p>
+          </div>
+
+          <div class="scan-line"></div>
+        </div>
+
+      </section>
+
+      <section class="info-card">
+
+        <h2>Estado de Misión</h2>
+
+        <div class="row">
+          <span>Cliente</span>
+          <strong>Empresa / Mandante</strong>
+        </div>
+
+        <div class="row">
+          <span>Tipo</span>
+          <strong>Inspección aérea crítica</strong>
+        </div>
+
+        <div class="row">
+          <span>Estado</span>
+          <strong class="green">Transmitiendo</strong>
+        </div>
+
+        <div class="row">
+          <span>Hora activación</span>
+          <strong id="horaActual">--:--:--</strong>
+        </div>
+
+      </section>
+
+      <section class="info-card">
+
+        <h2>Enlaces</h2>
+
+        <div class="signal">
+          <span>Starlink</span>
+          <div><i style="width: 92%;"></i></div>
+          <strong>92%</strong>
+        </div>
+
+        <div class="signal">
+          <span>LiveU</span>
+          <div><i style="width: 87%;"></i></div>
+          <strong>87%</strong>
+        </div>
+
+        <div class="signal">
+          <span>Control RPAS</span>
+          <div><i style="width: 95%;"></i></div>
+          <strong>95%</strong>
+        </div>
+
+      </section>
+
+      <section class="info-card">
+
+        <h2>Capas Operacionales</h2>
+
+        <div class="layers">
+          <button class="active">Emergencia</button>
+          <button>Faena</button>
+          <button>Seguridad</button>
+          <button>Evacuación</button>
+        </div>
+
+      </section>
+
+    </aside>
+
+  </main>
+
+  <div class="alert-box" id="alertBox">
+    ALERTA OPERACIONAL ACTIVADA
+  </div>
+
+  <script src="plataforma.js"></script>
+
+</body>
+
+</html>
