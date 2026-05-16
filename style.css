@@ -812,3 +812,16 @@ a {
   opacity: 1;
   transform: translateY(0);
 }
+
+.nav-live {
+  background: #0077d9;
+  color: white !important;
+  padding: 10px 16px;
+  border-radius: 14px;
+  font-weight: 700;
+  box-shadow: 0 0 20px rgba(0, 119, 217, 0.35);
+}
+
+.nav-live:hover {
+  background: #005fa8;
+}
