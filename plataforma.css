@@ -248,10 +248,10 @@ body {
 /* PANEL DERECHO */
 
 .side-panel {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+
   gap: 18px;
-  overflow-y: auto;
-  padding-right: 3px;
 }
 
 .video-box,
@@ -638,6 +638,8 @@ body {
   gap: 18px;
 
   margin-top: 18px;
+
+  align-items: start;
 }
 
 /* MAPA */
@@ -669,6 +671,37 @@ body {
 
   .video-main-header h1 {
     font-size: 1.5rem;
+  }
+
+}
+
+/* NUEVA DISTRIBUCIÓN */
+
+.map-panel {
+  height: 320px;
+
+  overflow: hidden;
+}
+
+.map-panel #map {
+  height: 100%;
+  min-height: unset;
+}
+
+.side-panel .info-card {
+  flex: unset;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1050px) {
+
+  .bottom-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .map-panel {
+    height: 420px;
   }
 
 }
