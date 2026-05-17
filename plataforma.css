@@ -25,11 +25,13 @@ body {
   overflow: hidden;
 }
 
+/* TOPBAR */
+
 .topbar {
   height: 76px;
   padding: 0 26px;
   border-bottom: 1px solid var(--line);
-  background: rgba(7, 17, 28, 0.92);
+  background: rgba(7, 17, 28, 0.94);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -83,6 +85,13 @@ body {
   border-color: rgba(255, 77, 77, 0.45);
 }
 
+#btnUbicacion {
+  background: rgba(0, 119, 217, 0.18);
+  border-color: rgba(0, 119, 217, 0.55);
+}
+
+/* LAYOUT */
+
 .dashboard {
   height: calc(100vh - 76px);
   display: grid;
@@ -127,6 +136,30 @@ body {
   font-size: 1.7rem;
 }
 
+/* CONTROLES MAPA */
+
+.map-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.map-btn {
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.08);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.map-btn.active,
+.map-btn:hover {
+  background: rgba(0,119,217,0.25);
+  border-color: rgba(0,119,217,0.65);
+}
+
 .live-badge {
   color: white;
   background: rgba(255, 77, 77, 0.18);
@@ -143,123 +176,76 @@ body {
   100% { box-shadow: 0 0 0 0 rgba(255,77,77,0); }
 }
 
-.map-area {
-  position: relative;
+/* MAPA LEAFLET */
+
+#map {
   flex: 1;
-  min-height: 500px;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 28% 42%, rgba(0, 119, 217, 0.22), transparent 26%),
-    radial-gradient(circle at 70% 55%, rgba(45, 211, 111, 0.10), transparent 22%),
-    linear-gradient(135deg, #0a1724, #11283a 48%, #0a1420);
+  min-height: 520px;
+  background: #0b1622;
 }
 
-.grid-map {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
-  background-size: 54px 54px;
+.leaflet-container {
+  background: #0b1622;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.map-area::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(30deg, transparent 0 46%, rgba(255,255,255,.08) 47%, transparent 48%),
-    linear-gradient(150deg, transparent 0 54%, rgba(255,255,255,.05) 55%, transparent 56%);
-  opacity: 0.7;
+.leaflet-control-zoom a {
+  background: rgba(7, 17, 28, 0.92) !important;
+  color: white !important;
+  border-bottom: 1px solid var(--line) !important;
 }
 
-.zone {
-  position: absolute;
-  border: 2px dashed rgba(255, 140, 42, 0.85);
-  background: rgba(255, 140, 42, 0.08);
-  color: #ffd2ad;
-  font-weight: 800;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  font-size: .72rem;
-  padding: 10px;
+.leaflet-control-attribution {
+  background: rgba(7, 17, 28, 0.75) !important;
+  color: #c8d3df !important;
+  font-size: 10px;
 }
 
-.zone-1 {
-  width: 320px;
-  height: 210px;
-  left: 42%;
-  top: 34%;
-  border-radius: 28px;
-  transform: rotate(-10deg);
+.leaflet-control-attribution a {
+  color: #9fd0ff !important;
 }
 
-.marker {
-  position: absolute;
+/* MARCADORES PERSONALIZADOS */
+
+.custom-marker {
   width: 22px;
   height: 22px;
   border-radius: 50%;
   border: 3px solid white;
-  box-shadow: 0 0 20px rgba(255,255,255,0.45);
+  box-shadow: 0 0 18px rgba(255,255,255,.55);
 }
 
-.marker span {
-  position: absolute;
-  left: 28px;
-  top: -5px;
-  white-space: nowrap;
-  background: rgba(7, 17, 28, 0.82);
-  border: 1px solid var(--line);
-  padding: 6px 9px;
-  border-radius: 10px;
-  font-size: .75rem;
-  font-weight: 800;
-}
-
-.marker.base {
-  left: 20%;
-  top: 66%;
+.marker-base {
   background: var(--blue);
 }
 
-.marker.drone {
-  left: 48%;
-  top: 42%;
+.marker-drone {
   background: var(--green);
-  animation: droneMove 6s ease-in-out infinite;
 }
 
-.marker.incident {
-  left: 68%;
-  top: 48%;
+.marker-incident {
   background: var(--red);
   animation: incidentPulse 1.6s infinite;
 }
 
-@keyframes droneMove {
-  0% { transform: translate(0, 0); }
-  50% { transform: translate(90px, -55px); }
-  100% { transform: translate(0, 0); }
-}
-
 @keyframes incidentPulse {
-  0% { box-shadow: 0 0 0 0 rgba(255,77,77,.7); }
-  70% { box-shadow: 0 0 0 24px rgba(255,77,77,0); }
+  0% { box-shadow: 0 0 0 0 rgba(255,77,77,.75); }
+  70% { box-shadow: 0 0 0 20px rgba(255,77,77,0); }
   100% { box-shadow: 0 0 0 0 rgba(255,77,77,0); }
 }
 
-.route-line {
-  position: absolute;
-  left: 22%;
-  top: 68%;
-  width: 530px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--blue), var(--green), var(--red));
-  transform: rotate(-18deg);
-  transform-origin: left center;
-  opacity: .8;
-  box-shadow: 0 0 18px rgba(0,119,217,.45);
+.marker-label {
+  background: rgba(7, 17, 28, 0.92);
+  color: white;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 5px 8px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  white-space: nowrap;
 }
+
+/* PANEL DERECHO */
 
 .side-panel {
   display: grid;
@@ -350,6 +336,8 @@ body {
   100% { top: 100%; }
 }
 
+/* INFO */
+
 .info-card h2 {
   font-size: 1.15rem;
   margin-bottom: 16px;
@@ -373,6 +361,8 @@ body {
 
 .row strong {
   text-align: right;
+  max-width: 230px;
+  word-break: break-word;
 }
 
 .green {
@@ -411,6 +401,8 @@ body {
   color: var(--green);
 }
 
+/* CAPAS */
+
 .layers {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -433,6 +425,8 @@ body {
   border-color: rgba(0,119,217,.55);
 }
 
+/* ALERTA */
+
 .alert-box {
   position: fixed;
   left: 50%;
@@ -446,12 +440,14 @@ body {
   letter-spacing: .08em;
   box-shadow: 0 20px 60px rgba(255,77,77,.35);
   transition: .35s ease;
-  z-index: 100;
+  z-index: 10000;
 }
 
 .alert-box.show {
   transform: translateX(-50%) translateY(0);
 }
+
+/* RESPONSIVE */
 
 @media (max-width: 1050px) {
   body {
@@ -467,7 +463,7 @@ body {
     overflow: visible;
   }
 
-  .map-area {
+  #map {
     min-height: 560px;
   }
 }
@@ -482,7 +478,15 @@ body {
   }
 
   .topbar nav {
+    flex-wrap: wrap;
     justify-content: space-between;
+  }
+
+  .topbar a,
+  .topbar button {
+    flex: 1;
+    text-align: center;
+    padding: 10px 12px;
   }
 
   .dashboard {
@@ -495,23 +499,16 @@ body {
     gap: 12px;
   }
 
+  .map-controls {
+    flex-wrap: wrap;
+  }
+
   .map-header h1 {
     font-size: 1.35rem;
   }
 
-  .map-area {
+  #map {
     min-height: 480px;
-  }
-
-  .zone-1 {
-    width: 230px;
-    height: 160px;
-    left: 34%;
-    top: 32%;
-  }
-
-  .route-line {
-    width: 330px;
   }
 
   .signal {
