@@ -7,6 +7,7 @@
 
   <title>UMAEF | Plataforma Live</title>
 
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="plataforma.css" />
 </head>
 
@@ -24,6 +25,7 @@
 
     <nav>
       <a href="index.html">← Volver</a>
+      <button id="btnUbicacion">Usar mi ubicación</button>
       <button id="btnAlerta">Simular Alerta</button>
     </nav>
 
@@ -39,34 +41,24 @@
           <h1>Emergencia / Faena Activa</h1>
         </div>
 
-        <div class="live-badge">
-          ● EN VIVO
-        </div>
+        <div class="map-controls">
+
+  <button id="btnNormal" class="map-btn active">
+    Mapa
+  </button>
+
+  <button id="btnSatelite" class="map-btn">
+    Satelital
+  </button>
+
+  <div class="live-badge">
+    ● EN VIVO
+  </div>
+
+</div>
       </div>
 
-      <div class="map-area">
-
-        <div class="grid-map"></div>
-
-        <div class="zone zone-1">
-          Zona de inspección
-        </div>
-
-        <div class="marker base">
-          <span>UMAEF</span>
-        </div>
-
-        <div class="marker drone" id="droneMarker">
-          <span>DRON</span>
-        </div>
-
-        <div class="marker incident">
-          <span>INCIDENTE</span>
-        </div>
-
-        <div class="route-line"></div>
-
-      </div>
+      <div id="map"></div>
 
     </section>
 
@@ -110,8 +102,13 @@
         </div>
 
         <div class="row">
-          <span>Hora activación</span>
+          <span>Hora</span>
           <strong id="horaActual">--:--:--</strong>
+        </div>
+
+        <div class="row">
+          <span>Coordenadas</span>
+          <strong id="coordActual">Sin ubicación</strong>
         </div>
 
       </section>
@@ -145,10 +142,10 @@
         <h2>Capas Operacionales</h2>
 
         <div class="layers">
-          <button class="active">Emergencia</button>
-          <button>Faena</button>
-          <button>Seguridad</button>
-          <button>Evacuación</button>
+          <button id="layerBase" class="active">Unidad UMAEF</button>
+          <button id="layerDrone" class="active">Dron</button>
+          <button id="layerZona" class="active">Zona</button>
+          <button id="layerIncidente" class="active">Incidente</button>
         </div>
 
       </section>
@@ -161,6 +158,7 @@
     ALERTA OPERACIONAL ACTIVADA
   </div>
 
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="plataforma.js"></script>
 
 </body>
